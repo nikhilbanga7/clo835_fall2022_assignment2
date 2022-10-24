@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: mysql
+  labels:
+    name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: mysql
+  template:
+    metadata:
+      labels:
+        name: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: 660700579747.dkr.ecr.us-east-1.amazonaws.com/assignment2ecr:v1.1mysql
+        ports:
+        - containerPort: 3306
+        env:
+        - name: DBPWD
+          value: "pw"
+        - name: DBUSER
+          value: "root"
+        - name: MYSQL_ROOT_PASSWORD
+          value: "pw"

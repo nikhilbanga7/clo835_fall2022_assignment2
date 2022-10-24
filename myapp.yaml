@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: employees
+  labels:
+     name: employees
+spec:
+  containers:
+  - name: employees
+    image: 660700579747.dkr.ecr.us-east-1.amazonaws.com/assignment2ecr:v0.1nodeapp
+    ports:
+    - containerPort: 8080
+    env:
+    - name: DBHOST
+      value: "10.244.0.5"
+    - name: DBPWD
+      value: "pw"
+    - name: DBPORT
+      value: "3306"
+    - name: DBUSER
+      value: "root"

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: employees
+  labels:
+     app: employees
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: employees
+  template:
+    metadata:
+      labels:
+         app: employees
+
+    spec:
+      containers:
+      - name: employees
+        image: 660700579747.dkr.ecr.us-east-1.amazonaws.com/assignment2ecr:v0.1nodeapp
+  env:
+  - name: DBHOST
+    value: "10.244.0.5"
+  - name: DBPWD
+    value: "pw"
+  - name: DBPORT
+    value: 3306
+  - name: DBUSER
+    value: root
